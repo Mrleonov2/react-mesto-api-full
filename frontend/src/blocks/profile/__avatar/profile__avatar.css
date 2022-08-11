@@ -1,0 +1,8 @@
+.profile__avatar{
+  border-radius: 50%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background:url('https://avatars.mds.yandex.net/i?id=f9d509fafe5176176d96aa142e65a600-5362606-images-thumbs&n=13') center/cover;
+}

@@ -1,0 +1,11 @@
+.footer__project {
+  margin: 0;
+  font-size: 18px;
+  line-height: 22px;
+}
+@media screen and (max-width: 425px) {
+  .footer__project {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

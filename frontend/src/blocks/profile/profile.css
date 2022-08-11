@@ -1,0 +1,18 @@
+.profile {
+  color: white;
+  max-width: 880px;
+  margin: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+@media screen and (max-width: 1024px) {
+  .profile {
+    max-width: 88%;
+  }
+}
+@media screen and (max-width: 740px) {
+  .profile {
+    flex-direction: column;
+  }
+}

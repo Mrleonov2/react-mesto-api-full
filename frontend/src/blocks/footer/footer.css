@@ -1,0 +1,15 @@
+.footer {
+  color: #545454;
+  max-width: 880px;
+  margin: 0 auto 60px;
+}
+@media screen and (max-width: 1024px) {
+  .footer {
+    max-width: 88%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .footer {
+    margin: 0 auto 36px;
+  }
+}

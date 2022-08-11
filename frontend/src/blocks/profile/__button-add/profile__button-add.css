@@ -1,0 +1,19 @@
+.profile__button-add {
+  height: 50px;
+  border: 2px solid white;
+  width: 150px;
+  margin-left: auto;
+  border-radius: 2px;
+  background: black url("../../../images/CrossButton.svg") center/22px 22px
+    no-repeat;
+}
+.profile__button-add:hover {
+  opacity: 0.6;
+}
+@media screen and (max-width: 740px) {
+  .profile__button-add {
+    width: 100%;
+    margin: 30px 0 0;
+    background-size: 16px 16px;
+  }
+}

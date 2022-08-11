@@ -1,0 +1,12 @@
+.cards__like-count {
+  position: absolute;
+  bottom: 12px;
+  right: 26px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  
+  
+}

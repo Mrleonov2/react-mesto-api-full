@@ -1,0 +1,15 @@
+.profile__info{
+  display: grid;
+  grid-template-areas: 
+  "n n n n n b"
+  "j j j j . .";
+  margin: 6px 0 0 30px;
+}
+@media screen and (max-width:720px){
+  .profile__info{
+    margin: 0;
+    grid-template-areas: 
+    "n n n n n b"
+    "j j j j j j";
+  }
+}
