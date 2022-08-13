@@ -1,4 +1,4 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "https://api.leonov.nomoreparties.ico/";
 
 const checkResponse = (response) => {
   console.log("response ok: ", response);
