@@ -76,9 +76,8 @@ class Api {
   }
 }
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-37",
+  baseUrl: "https://api.leonov.nomoredomains.sbs",
   headers: {
-    authorization: "ded2d1e6-c328-4460-ae09-846e4621c709",
     "Content-Type": "application/json",
   },
 });
