@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.leonov.nomoreparties.ico/";
+export const BASE_URL = "https://api.leonov.nomoreparties.ico";
 
 const checkResponse = (response) => {
   console.log("response ok: ", response);
@@ -36,7 +36,7 @@ export const checkToken = (token) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `${token}`,
+      Authorization: `Bearer ${token}`,
     },
   }).then((res) => res.json());
 };
