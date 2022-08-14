@@ -6,6 +6,7 @@ const { celebrate, Joi, errors } = require('celebrate');
 
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const corsOption = require('./utils/corsOption')
 const helmet = require('helmet');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
@@ -22,7 +23,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOption));
 app.use(helmet());
 app.use(requestLogger);
 
