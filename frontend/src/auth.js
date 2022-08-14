@@ -6,8 +6,8 @@ const checkResponse = (response) => {
     return response.json();
   }
 
-  return response.json().then((res) => {
-    throw res.message[0].messages[0].message;
+  return response.json().then((err) => {
+    throw err
   });
 };
 export const register = (password, email) => {
@@ -36,7 +36,6 @@ export const checkToken = (token) => {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
   }).then((res) => res.json());
 };
