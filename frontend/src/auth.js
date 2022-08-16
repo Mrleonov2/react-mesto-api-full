@@ -1,4 +1,4 @@
-export const BASE_URL = "https://api.leonov.nomoreparties.ico";
+export const BASE_URL = "https://api.leonov.nomoredomains.sbs";
 
 const checkResponse = (response) => {
   console.log("response ok: ", response);
@@ -7,14 +7,13 @@ const checkResponse = (response) => {
   }
 
   return response.json().then((err) => {
-    throw err
+    throw err;
   });
 };
 export const register = (password, email) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
-      "Accept": "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ password, email }),
@@ -24,7 +23,6 @@ export const authorize = (password, email) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
-      "Accept": "application/json",
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ password, email }),
@@ -34,7 +32,6 @@ export const checkToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
-      "Accept": "application/json",
       "Content-Type": "application/json",
     },
   }).then((res) => res.json());

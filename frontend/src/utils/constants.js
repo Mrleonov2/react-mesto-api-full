@@ -6,7 +6,4 @@ const config = {
   errorInput: "popup__input-error_active",
 };
 
-
-export {
-  config
-};
+export { config };

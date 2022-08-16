@@ -26,7 +26,6 @@ class Api {
       }),
     }).then(this._checkResponse);
   }
-  
 
   editAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
@@ -53,21 +52,20 @@ class Api {
       headers: this._headers,
     }).then(this._checkResponse);
   }
-  changeLikeCardStatus(id,likeStatus) {
-    if(likeStatus){
+  changeLikeCardStatus(id, likeStatus) {
+    if (likeStatus) {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "PUT",
         headers: this._headers,
       }).then(this._checkResponse);
-    }else{
+    } else {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "DELETE",
         headers: this._headers,
-      }).then(this._checkResponse);  
+      }).then(this._checkResponse);
     }
-    
   }
-  
+
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
@@ -82,4 +80,4 @@ const api = new Api({
   },
 });
 
-export {api};
+export { api };
