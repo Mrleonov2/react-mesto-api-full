@@ -24,6 +24,8 @@ export const authorize = (password, email) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'Accept': 'application/json'
+
     },
     body: JSON.stringify({ password, email }),
   }).then(checkResponse);
@@ -33,6 +35,8 @@ export const checkToken = (token) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      'Accept': 'application/json'
+
     },
   }).then((res) => res.json());
 };

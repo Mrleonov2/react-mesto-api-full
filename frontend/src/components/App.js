@@ -12,9 +12,6 @@ import InfoTooltip from "./InfoTooltip/InfoTooltip";
 import * as auth from "../auth.js";
 import {
   Route,
-  Switch,
-  Redirect,
-  withRouter,
   useHistory,
   Link,
 } from "react-router-dom";

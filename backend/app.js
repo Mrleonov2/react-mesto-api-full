@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOption));
 app.use(helmet());
-app.use(requestLogger);
+// app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -55,8 +55,8 @@ app.get('/signout', (_, res) => {
 app.use(auth, routerUser);
 app.use(auth, routerCard);
 app.use('*', auth, (req, res, next) => { next(new NotFoundError('Страница по указанному URL не найдена')); });
-app.use(errorLogger);
-app.use(errors());
+// app.use(errorLogger);
+// app.use(errors());
 
 app.use(errHandler);
 app.listen(PORT, () => {
