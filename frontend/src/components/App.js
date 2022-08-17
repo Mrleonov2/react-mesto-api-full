@@ -65,9 +65,9 @@ function App() {
     history.push("/sign-in");
   }
 
-  function handleLogin(password, email) {
+  function handleLogin({password, email}) {
     return auth
-      .authorize(password, email)
+      .authorize({password, email})
       .then((data) => {
         if (!data.token) {
           return;
@@ -80,9 +80,9 @@ function App() {
         console.log(err);
       });
   }
-  const handleRegister = (password, email) => {
+  const handleRegister = ({password, email}) => {
     return auth
-      .register(password, email)
+      .register({password, email})
       .then((res) => {
         if (res) {
           history.push("/sign-in");

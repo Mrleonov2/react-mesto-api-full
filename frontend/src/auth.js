@@ -10,16 +10,17 @@ const checkResponse = (response) => {
     throw err;
   });
 };
-export const register = (password, email) => {
+export const register = ({password, email}) => {
   return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'Accept': 'application/json'
     },
     body: JSON.stringify({ password, email }),
   }).then(checkResponse);
 };
-export const authorize = (password, email) => {
+export const authorize = ({password, email}) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
