@@ -23,13 +23,36 @@ const app = express();
 
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
-app.use(cookieParser());
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PATCH,DELETE,PUT,POST';
+  const requestHeaders = req.headers['acces-control-request-headers'];
+  const allowedCors = [
+    'https://api.leonov.nomoredomains.sbs',
+    'http://api.leonov.nomoredomains.sbs',
+    'http:/localhost:3000',
+    'https://leonov.nomoredomains.sbs',
+    'http://leonov.nomoredomains.sbs',
+    'https://api.leonov.nomoredomains.sbs/signup',
+    'https://api.leonov.nomoredomains.sbs/signin',
+  ];
+  if (allowedCors.includes(origin)) {
+    res.header('Acess-Conrol-Allow-Origin', origin);
+    if (method === 'OPTIONS') {
+      res.header('Acess-Conrol-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+      res.header('Acess-Conrol-Allow-Headers', requestHeaders);
+      return res.end();
+    }
+  }
+  next();
+});
 app.use(cors(corsOption));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger);
-
+app.use(cookieParser());
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');

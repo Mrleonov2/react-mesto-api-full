@@ -77,6 +77,7 @@ const api = new Api({
   baseUrl: "https://api.leonov.nomoredomains.sbs",
   headers: {
     "Content-Type": "application/json",
+    "Accept":"application/json"
   },
 });
 
