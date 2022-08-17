@@ -14,7 +14,7 @@ function Login({ onLogin }) {
     if (!loginValue.password || !loginValue.email) {
       return;
     }
-    onLogin(loginValue.password, loginValue.email)
+    onLogin({loginValue})
   }
 
   return (
