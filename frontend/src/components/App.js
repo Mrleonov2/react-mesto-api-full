@@ -96,9 +96,9 @@ function App() {
       });
   };
   function handleTokenCheck() {
-    //
+    const jwt = document.cookie.jwt;
       auth
-        .checkToken(req.cookies.jwt)
+        .checkToken(jwt)
         .then((res) => {
           if (res) {
             setEmail(res.data.email);
