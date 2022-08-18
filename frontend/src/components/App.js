@@ -73,7 +73,7 @@ function App() {
           return;
         }
         auth
-        .checkToken(data.cookies.jwt);
+        .checkToken(data.token);
         setloggedIn(true);
         history.push("/");
       })
