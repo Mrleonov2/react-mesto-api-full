@@ -31,13 +31,13 @@ export const authorize = ({password, email}) => {
     body: JSON.stringify({ password, email }),
   }).then(checkResponse);
 };
-export const checkToken = (token) => {
+export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       'Accept': 'application/json',
-      'Authorization':`${token}`
+      'Authorization':`${document.cookie.jwt}`
 
     },
   }).then((res) => res.json());
