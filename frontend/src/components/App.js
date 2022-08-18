@@ -68,12 +68,13 @@ function App() {
   function handleLogin({password, email}) {
     return auth
       .authorize({password, email})
-      .then((data) => {
-        if (!data.token) {
+      .then((res) => {
+        if (!res.token) {
           return;
         }
         auth
-        .checkToken(data.token);
+        .checkToken(res.token);
+        localStorage.setItem('jwt',res.token)
         setloggedIn(true);
         history.push("/");
       })

@@ -78,7 +78,7 @@ const api = new Api({
   headers: {
     "Content-Type": "application/json",
     "Accept":"application/json",
-    "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmZjYTc0YmY0ZDZlODczNTcwNzIxMGIiLCJpYXQiOjE2NjA4MjMzNDgsImV4cCI6MTY2MDkwOTc0OH0.i20WCl5B-EYQP8U-nzaQ7f7O5gJ2RYwUUipakTvgrDY"
+    "Authorization":`${localStorage.getItem('jwt')}`
   },
 });
 
