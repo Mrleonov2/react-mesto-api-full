@@ -72,7 +72,8 @@ function App() {
         if (!data.token) {
           return;
         }
-        localStorage.setItem("jwt", data.token);
+        auth
+        .checkToken(data.cookies.jwt);
         setloggedIn(true);
         history.push("/");
       })
@@ -95,10 +96,9 @@ function App() {
       });
   };
   function handleTokenCheck() {
-    if (localStorage.getItem("jwt")) {
-      const jwt = localStorage.getItem("jwt");
+    //
       auth
-        .checkToken(jwt)
+        .checkToken(req.cookies.jwt)
         .then((res) => {
           if (res) {
             setEmail(res.data.email);
@@ -109,7 +109,7 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
-    }
+    
   }
   function handleCardLike(card, isLiked) {
     api
