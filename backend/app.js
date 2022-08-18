@@ -61,8 +61,9 @@ app.post(
 app.get('/signout', (_, res) => {
   res.status(200).clearCookie('jwt').send({ message: 'Выход' });
 });
-app.use(auth, routerUser);
-app.use(auth, routerCard);
+app.use(auth);
+app.use(routerUser);
+app.use(routerCard);
 app.use('*', auth, (req, res, next) => {
   next(new NotFoundError('Страница по указанному URL не найдена'));
 });
