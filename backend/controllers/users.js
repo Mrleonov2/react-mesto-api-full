@@ -111,6 +111,7 @@ const updateAvatar = (req, res, next) => {
       return next(err);
     });
 };
+
 const updateUser = (req, res, next) => {
   const { name, about } = req.body;
   const id = req.user._id;
@@ -149,7 +150,6 @@ const login = (req, res, next) => {
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 1,
         httpOnly: true,
-        secure: true,
         sameSite: true,
       });
       res.send({ token });

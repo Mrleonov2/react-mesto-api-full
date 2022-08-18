@@ -10,11 +10,7 @@ import Register from "./Register/Register";
 import Login from "./Login/Login";
 import InfoTooltip from "./InfoTooltip/InfoTooltip";
 import * as auth from "../auth.js";
-import {
-  Route,
-  useHistory,
-  Link,
-} from "react-router-dom";
+import { Route, useHistory, Link } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -65,16 +61,15 @@ function App() {
     history.push("/sign-in");
   }
 
-  function handleLogin({password, email}) {
+  function handleLogin({ password, email }) {
     return auth
-      .authorize({password, email})
+      .authorize({ password, email })
       .then((res) => {
         if (!res.token) {
           return;
         }
-        auth
-        .checkToken(res.token);
-        localStorage.setItem('jwt',res.token)
+        auth.checkToken(res.token);
+        localStorage.setItem("jwt", res.token);
         setloggedIn(true);
         history.push("/");
       })
@@ -82,9 +77,9 @@ function App() {
         console.log(err);
       });
   }
-  const handleRegister = ({password, email}) => {
+  const handleRegister = ({ password, email }) => {
     return auth
-      .register({password, email})
+      .register({ password, email })
       .then((res) => {
         if (res) {
           history.push("/sign-in");
@@ -98,19 +93,18 @@ function App() {
   };
   function handleTokenCheck() {
     const jwt = document.cookie.jwt;
-      auth
-        .checkToken(jwt)
-        .then((res) => {
-          if (res) {
-            setEmail(res.data.email);
-            setloggedIn(true);
-            history.push("/");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    
+    auth
+      .checkToken(jwt)
+      .then((res) => {
+        if (res) {
+          setEmail(res.data.email);
+          setloggedIn(true);
+          history.push("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   function handleCardLike(card, isLiked) {
     api
