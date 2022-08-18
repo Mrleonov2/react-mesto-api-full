@@ -6,7 +6,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
-      credentials:"include",
+      credentials: "include",
       headers: this._headers,
     }).then(this._checkResponse);
   }
@@ -14,14 +14,14 @@ class Api {
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-      credentials:"include",
+      credentials: "include",
       headers: this._headers,
     }).then(this._checkResponse);
   }
   editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      credentials:"include",
+      credentials: "include",
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -33,7 +33,7 @@ class Api {
   editAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      credentials:"include",
+      credentials: "include",
       headers: this._headers,
       body: JSON.stringify({
         avatar,
@@ -43,7 +43,7 @@ class Api {
   addCard(name, link) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      credentials:"include",
+      credentials: "include",
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -54,7 +54,7 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
-      credentials:"include",
+      credentials: "include",
       headers: this._headers,
     }).then(this._checkResponse);
   }
@@ -62,13 +62,13 @@ class Api {
     if (likeStatus) {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "PUT",
-        credentials:"include",
+        credentials: "include",
         headers: this._headers,
       }).then(this._checkResponse);
     } else {
       return fetch(`${this._baseUrl}/cards/${id}/likes`, {
         method: "DELETE",
-        credentials:"include",
+        credentials: "include",
         headers: this._headers,
       }).then(this._checkResponse);
     }
@@ -85,8 +85,8 @@ const api = new Api({
   baseUrl: "https://api.leonov.nomoredomains.sbs",
   headers: {
     "Content-Type": "application/json",
-    "Accept":"application/json",
-    "Authorization":`${localStorage.getItem('jwt')}`
+    Accept: "application/json",
+    Authorization: `${localStorage.getItem("jwt")}`,
   },
 });
 
