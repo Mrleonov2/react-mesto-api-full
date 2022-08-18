@@ -12,11 +12,11 @@ const checkResponse = (response) => {
 };
 export const register = ({ password, email }) => {
   return fetch(`${BASE_URL}/signup`, {
-    credentials: "include",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
+      credentials: "include",
     },
     body: JSON.stringify({ password, email }),
   }).then(checkResponse);
@@ -28,19 +28,18 @@ export const authorize = ({ password, email }) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
+      credentials: "include",
     },
     body: JSON.stringify({ password, email }),
   }).then(checkResponse);
 };
-export const checkToken = (token) => {
+export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
-    credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `${token}`,
-      
+      credentials: "include",
     },
   }).then((res) => res.json());
 };
