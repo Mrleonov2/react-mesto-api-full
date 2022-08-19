@@ -68,8 +68,8 @@ function App() {
         if (!res.token) {
           return;
         }
-        auth.checkToken(res.token);
-        localStorage.setItem("jwt", res.token);
+        auth.checkToken();
+        
         setloggedIn(true);
         history.push("/");
       })
@@ -92,12 +92,11 @@ function App() {
       });
   };
   function handleTokenCheck() {
-    const jwt = document.cookie.jwt;
     auth
-      .checkToken(jwt)
+      .checkToken()
       .then((res) => {
         if (res) {
-          setEmail(res.data.email);
+          setEmail(res.email);
           setloggedIn(true);
           history.push("/");
         }

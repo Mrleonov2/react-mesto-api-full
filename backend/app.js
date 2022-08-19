@@ -66,7 +66,7 @@ app.get('/signout', (_, res) => {
 app.use(auth);
 app.use(routerUser);
 app.use(routerCard);
-app.use('*', (req, res, next) => {
+app.use('/*', (req, res, next) => {
   next(new NotFoundError('Страница по указанному URL не найдена'));
 });
 app.use(errorLogger);
