@@ -50,7 +50,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [cards]);
 
   React.useEffect(() => {
     handleTokenCheck();
