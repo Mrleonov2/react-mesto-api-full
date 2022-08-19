@@ -106,6 +106,7 @@ function App() {
       });
   }
   function handleCardLike(card, isLiked) {
+    console.log(card);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
