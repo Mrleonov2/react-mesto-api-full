@@ -17,6 +17,7 @@ function Card({ onCardClick, onCardLike, onCardDelete, item }) {
     onCardClick(item);
   }
   function handleLikeClick() {
+    console.log(item)
     onCardLike(item, isLiked);
   }
   function handleDeleteClick() {
