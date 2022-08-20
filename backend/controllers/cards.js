@@ -4,17 +4,25 @@ const ForbiddenError = require('../errors/ForbiddenError');
 const NotFoundError = require('../errors/NotFoundError');
 
 const getCards = (req, res, next) => {
-  Card.find({}).populate('owner').then((cards) => {
-    res.send(cards);
-  }).catch(next);
+  Card.find({})
+    .then((cards) => {
+      res.send(cards);
+    })
+    .catch(next);
 };
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
-  Card.create({ name, link, owner: { _id: req.user._id } }).populate('owner')
-    .then((card) => { res.send(card); })
+  Card.create({ name, link, owner: { _id: req.user._id } })
+    .then((card) => {
+      res.send(card);
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return next(new BadRequestError('Переданы некорректные данные при создании карточки'));
+        return next(
+          new BadRequestError(
+            'Переданы некорректные данные при создании карточки',
+          ),
+        );
       }
       return next(err);
     });
@@ -55,15 +63,20 @@ const likeCard = (req, res, next) => {
     req.params.cardId,
     { $addToSet: { likes: req.user._id } }, // добавить _id в массив, если его там нет
     { new: true },
-  ).then((card) => {
-    if (!card) {
-      return next(new NotFoundError('Передан несуществующий _id карточки'));
-    }
-    return res.send(card);
-  }).populate('owner')
+  )
+    .then((card) => {
+      if (!card) {
+        return next(new NotFoundError('Передан несуществующий _id карточки'));
+      }
+      return res.send(card);
+    })
     .catch((err) => {
       if (err.kind === 'ObjectId') {
-        return next(new BadRequestError('Переданы некорректные данные для постановки лайка'));
+        return next(
+          new BadRequestError(
+            'Переданы некорректные данные для постановки лайка',
+          ),
+        );
       }
       return next(err);
     });
@@ -74,7 +87,7 @@ const dislikeCard = (req, res, next) => {
     req.params.cardId,
     { $pull: { likes: req.user._id } }, // убрать _id из массива
     { new: true },
-  ).populate('owner')
+  )
     .then((card) => {
       if (!card) {
         return next(new NotFoundError('Передан несуществующий _id карточки'));
@@ -83,7 +96,11 @@ const dislikeCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.kind === 'ObjectId') {
-        return next(new BadRequestError('Переданы некорректные данные для постановки лайка'));
+        return next(
+          new BadRequestError(
+            'Переданы некорректные данные для постановки лайка',
+          ),
+        );
       }
       return next(err);
     });
