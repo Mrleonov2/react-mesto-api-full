@@ -10,7 +10,7 @@ const getCards = (req, res, next) => {
 };
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
-  Card.create({ name, link, owner: { _id: req.user._id } })
+  Card.create({ name, link, owner: { _id: req.user._id } }).populate('owner')
     .then((card) => { res.send(card); })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -60,7 +60,7 @@ const likeCard = (req, res, next) => {
       return next(new NotFoundError('Передан несуществующий _id карточки'));
     }
     return res.send(card);
-  })
+  }).populate('owner')
     .catch((err) => {
       if (err.kind === 'ObjectId') {
         return next(new BadRequestError('Переданы некорректные данные для постановки лайка'));
@@ -74,7 +74,7 @@ const dislikeCard = (req, res, next) => {
     req.params.cardId,
     { $pull: { likes: req.user._id } }, // убрать _id из массива
     { new: true },
-  )
+  ).populate('owner')
     .then((card) => {
       if (!card) {
         return next(new NotFoundError('Передан несуществующий _id карточки'));
