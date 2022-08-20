@@ -56,7 +56,6 @@ function App() {
     handleTokenCheck();
   }, []);
   function signOut() {
-    localStorage.removeItem("jwt");
     setloggedIn(false);
     history.push("/sign-in");
   }
